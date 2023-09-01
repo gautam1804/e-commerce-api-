@@ -10,11 +10,7 @@ All API requests should be made to the following base URL:
 
 http://localhost:3000/api/v1/
 
-.env part 
 
-API_URL=/api/v1
-CONNECTION_STRING=mongodb+srv://gautambiloniya1804:Triveous@123@triveous.o9dgtvs.mongodb.net/ecomm?retryWrites=true&w=majority
-secret=gautam-biloniya
 
 Authentication:
 
