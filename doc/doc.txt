@@ -1,0 +1,149 @@
+E-Commerce API Documentation
+
+Introduction:
+
+Welcome to the E-Commerce API Documentation. This document provides an overview of the available API endpoints, their functionalities, and usage guidelines for integrating our e-commerce platform with external applications.
+
+Base URL:
+
+All API requests should be made to the following base URL:
+
+http://localhost:3000/api/v1/
+
+.env part 
+
+API_URL=/api/v1
+CONNECTION_STRING=mongodb+srv://gautambiloniya1804:Triveous@123@triveous.o9dgtvs.mongodb.net/ecomm?retryWrites=true&w=majority
+secret=gautam-biloniya
+
+Authentication:
+
+To access the API, you must authenticate your requests using token . Obtain your API key by registering as a Admin in the postman.
+
+Authentication Header:
+
+Include the token in the Authorization header of your requests:
+
+Authorization: Bearer Your Token e.g. eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGYxNTBmMDFkOGQ0NjFhMjg5YWYzNDYiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTM1MzY1MjEsImV4cCI6MTY5MzYyMjkyMX0.a_qIinyJPr1AbXQqyG4ky8_LcAtiohZhKxsZL9lwLEw
+
+Error Handling:
+
+The API returns standard HTTP status codes for successful and unsuccessful requests. Error responses include a JSON object with error details.
+
+Example Error Response:
+
+{
+  "error": {
+    "code": 400,
+    "message": "Invalid request data.",
+    "details": [
+      {
+        "field": "product_id",
+        "message": "Product ID is required."
+      }
+    ]
+  }
+}
+
+Endpoints:
+
+Products
+
+List Products
+
+Endpoint: GET /products
+Description: Retrieve a list of products.
+Query Parameters:
+- page (optional): Page number for pagination.
+- limit (optional): Number of items per page.
+Response:
+- Status: 200 OK
+- Body: Array of product objects.
+
+Get Product Details
+
+Endpoint: GET /products/{product_id}
+Description: Retrieve detailed information about a specific product.
+Path Parameters:
+- product_id: ID of the product to retrieve.
+Response:
+- Status: 200 OK
+- Body: Product object.
+
+Create Product
+
+Endpoint: POST /products
+Description: Create a new product.
+Request Body:
+- Product object (JSON).
+Response:
+- Status: 201 Created
+- Body: Product object.
+
+Users
+
+Register User
+
+Endpoint: POST /users/register
+Description: Register a new user account.
+Request Body:
+- User object (JSON).
+Response:
+- Status: 201 Created
+- Body: User object with authentication token.
+
+Login User
+
+Endpoint: POST /users/login
+Description: Log in an existing user.
+Request Body:
+- User credentials (JSON).
+Response:
+- Status: 200 OK
+- Body: User object with authentication token.
+
+Get User Profile
+
+
+Orders
+
+Create Order
+
+Endpoint: POST /orders
+Description: Create a new order.
+Request Body:
+- Order object (JSON).
+Authentication: Requires a valid user token.
+Response:
+- Status: 201 Created
+- Body: Order object.
+
+Get Order Details
+
+Endpoint: GET /orders/{order_id}
+Description: Retrieve detailed information about a specific order.
+Path Parameters:
+- order_id: ID of the order to retrieve.
+Authentication: Requires a valid user token.
+Response:
+- Status: 200 OK
+- Body: Order object.
+
+List User Orders History
+
+Endpoint: GET /get/userorders/{userid}
+Description: Retrieve a list of orders for the authenticated user.
+Authentication: Requires a valid user token.
+Response:
+- Status: 200 OK
+- Body: Array of order objects.
+
+Usage Examples
+
+
+
+and many more End points.
+
+Conclusion
+
+This E-Commerce API Documentation provides developers with the necessary information to interact with our platform programmatically. For detailed API specifications and example requests and responses, please refer to the individual endpoint sections above. If you have any questions or need further assistance, please contact our support team.
